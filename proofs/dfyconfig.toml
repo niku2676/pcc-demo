@@ -1,0 +1,5 @@
+includes = ["**/*.dfy"]
+
+[options]
+resource-limit = 1000000
+verification-time-limit = 0
