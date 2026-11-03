@@ -1,0 +1,45 @@
+{
+  "assumptions": [],
+  "dafny_version": "4.11.0",
+  "dependency_hashes": [],
+  "function": {
+    "lineno": 59,
+    "path": "strings/palindrome.py",
+    "qualname": "is_palindrome_recursive",
+    "source": "def is_palindrome_recursive(s: str) -> bool:\n    \"\"\"\n    Return True if s is a palindrome otherwise return False.\n\n    >>> all(is_palindrome_recursive(key) is value for key, value in test_data.items())\n    True\n    \"\"\"\n    if len(s) <= 1:\n        return True\n    if s[0] == s[len(s) - 1]:\n        return is_palindrome_recursive(s[1:-1])\n    else:\n        return False",
+    "source_hash": "07f239d1fbdb997cc094f856b4c4366a44e8ffa8af3175166099105ba9c1ecc8"
+  },
+  "function_path": "transpiler",
+  "pcc_version": "0.1.0",
+  "pylib_sha256": "630e3e955ea020974a870725885ae3832a0a316d29e710e4c959a31be6c91f95",
+  "spec_dafny": "predicate pre(s: string) { true }\npredicate spec(s: string, result: bool) requires pre(s) { result == (s == py_reversed(s)) }\n",
+  "spec_path": "transpiler",
+  "spec_python": "def spec(s, result): return result == (s == s[::-1])",
+  "standing_assumptions": [
+    "inputs match the type hints",
+    "strings contain no lone surrogates"
+  ],
+  "translation_checks": [
+    {
+      "detail": "spec: 2460 cases agree",
+      "inputs_total": 2460,
+      "inputs_tried": 2460,
+      "kind": "differential",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "inputs_total": 10016,
+      "inputs_tried": 10014,
+      "kind": "differential",
+      "passed": true
+    },
+    {
+      "detail": "no differences found",
+      "inputs_total": null,
+      "inputs_tried": null,
+      "kind": "symbolic",
+      "passed": true
+    }
+  ]
+}
